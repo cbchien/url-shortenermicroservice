@@ -9,14 +9,23 @@
   </head>
   <body>
     <title>FCC API Project URL Shortener Microservice </title>
-    <h4>
-      FCC API Project URL Shortener Microservice 
-    </h4>
+    <h3>
+      API Project URL Shortener Microservice 
+    </h3>
+
     <section ng-controller = "shortAppCtrl">
       {{urlToShorten}}
     <input placeholder="Enter URL" ng-model="urlToShorten">
     <a class = "btn btn-primary" ng-href="/new/{{urlToShorten}}">Get ShortURL</a>
     </section>  
+    
+    <br>
+    <h7>
+      This is a project for <a href="https://www.freecodecamp.com/challenges/url-shortener-microservice">FreeCodeCamp</a> Back End Development
+    </h7><br>
+    <h7>
+      Coded by <a href="https://github.com/cbchien">Brian Chien</a> with help from <a href="https://www.youtube.com/user/pizzapokerguy87">Coding Tutorials 360</a>
+    </h7>
   </body>
 
 </html>
