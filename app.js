@@ -23,14 +23,25 @@ app.get('/new/:urlToShorten(*)', function(req, res, next){
   var urlToShorten = req.params.urlToShorten;
   var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
   var regex = expression;
-  if(regex.text(urlToShorten)===true){
-    return res.json(urlToShorten);
-  } else {
-    return res.json({urlToShorten: 'Failed'});
+  if(regex.test(urlToShorten)===true){
+    var short = Math.floor(Math.random()*100000).toString();
+    
+    var data = new shortUrl(
+      {
+        originalUul: urlToShorten,
+        shortUrl: short
+      }
+    );
+    
+    data.save(function(err){
+      return res.send('Error saving to database')
+    })
+    
+    return res.json(data);
   }
   
+  return res.json({urlToShorten: 'Failed'});
   
-  // return res.json(urlToShorten);
 });
 
 
