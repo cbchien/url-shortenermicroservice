@@ -1,14 +1,20 @@
-<html>
+<html ng-app="shortUrlApp">
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body>
     <title>FCC API Project URL Shortener Microservice </title>
     <h4>
       FCC API Project URL Shortener Microservice 
     </h4>
-    <input placeholder="Enter URL">
-    <a class = "btn btn-primary">Get ShortURL</a>
+    <section ng-controller = "shortAppCtrl">
+      {{urlToShorten}}
+    <input placeholder="Enter URL" ng-model="{{urlToShorten}}">
+    <a class = "btn btn-primary" ng-href="/new/{{urlToShorten}}">Get ShortURL</a>
+    </section>  
   </body>
 
 </html>
