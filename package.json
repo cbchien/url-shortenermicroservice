@@ -1,0 +1,34 @@
+{
+  "name": "header-parser",
+  "version": "1.0.0",
+  "description": "Get IP address, language and operating system for current browser",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cbchien/url-shortenermicroservice"
+  },
+  "author": "cbchien",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "path": "^0.12.7",
+    "cors": "^2.8.0",
+    "body-parser": "^1.17.0",
+    "mongoose": "^4.9.2"
+  },
+  "engines": {
+    "node": "8.1.x"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
