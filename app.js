@@ -9,6 +9,7 @@ app.use(cors());
 
 //connect to database
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shortUrls');
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/shortUrls');
 
 //use local files
@@ -28,24 +29,39 @@ app.get('/new/:urlToShorten(*)', function(req, res, next){
     
     var data = new shortUrl(
       {
-        originalUul: urlToShorten,
+        originalUrl: urlToShorten,
         shortUrl: short
       }
     );
     
     data.save(function(err){
-      return res.send('Error saving to database')
+      if(err) return res.send('Error saving to database')
     })
-    
     return res.json(data);
   }
   
-  return res.json({urlToShorten: 'Failed'});
-  
+  var data = new shortUrl(
+    {
+      originalUrl: urlToShorten,
+      shortUrl: 'Invalid URL'
+    });
+  return res.json(data);
 });
 
 
-
+app.get('/:urlToForward', function(req, res, next){
+  var shorterUrlInput = req.params.urlToForward;
+  shortUrl.findOne({'shortUrl': shorterUrlInput}, function(err, data){
+    if(err) return res.send('Error reading database');
+    var re = new RegExp("^(http|https)://", "i");
+    var strToCheck = data.originalUrl;
+    if(re.test(strToCheck)){
+      res.redirect(301, data.originalUrl);
+    }else{
+      res.redirect(301, 'http://' + data.originalUrl);
+    }
+  })
+})
 
 
 

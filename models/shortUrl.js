@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var urlSchema = new Schema({
-  originalUul: String,
+  originalUrl: String,
   shortUrl: String
 }, {timestamps: true});
 
