@@ -8,9 +8,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //connect to database
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shortUrls');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/shortUrls');
+// mongoose.connect('mongodb://localhost/shortUrls');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shortUrls');
+
 
 //use local files
 app.use(express.static(__dirname + '/public'));
